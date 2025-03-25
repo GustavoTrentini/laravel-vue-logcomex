@@ -4,11 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Contracts\DTOs\DefaultResponse;
 use App\Http\Requests\LoginRequest;
-use App\Services\AuthService;
+use App\Contracts\Interfaces\Services\IAuthService;
 
 class AuthController extends Controller
 {
-    public function __construct(private AuthService $authService){}
+    public function __construct(private IAuthService $authService){}
 
     public function login(LoginRequest $loginRequest)
     {
@@ -19,12 +19,4 @@ class AuthController extends Controller
         ))->toArray());
     }
 
-    public function register()
-    {
-        return response()->json((new DefaultResponse(
-            false,
-            'Método não implementado',
-            null
-        ))->toArray());
-    }
 }

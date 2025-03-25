@@ -4,7 +4,7 @@ services:
   app:
     build:
       context: .
-    container_name: laravel-app
+    container_name: laravel-backend-logcomex
     volumes:
       - ./:/var/www/html
     depends_on:
@@ -26,22 +26,12 @@ services:
     container_name: mysql
     restart: unless-stopped
     environment:
-      MYSQL_DATABASE: laravel
+      MYSQL_DATABASE: logcomex
       MYSQL_ROOT_PASSWORD: root
     ports:
-      - "3306:3306"
+      - "3309:3306"
     volumes:
       - dbdata:/var/lib/mysql
-
-  node:
-    image: node:18
-    working_dir: /var/www/html
-    volumes:
-      - ./:/var/www/html
-    command: >
-      sh -c "npm install && npm run dev"
-    depends_on:
-      - app
 
 volumes:
   dbdata:
