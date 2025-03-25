@@ -7,10 +7,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::post('/login', AuthController::class . '@login');
 
-Route::group(function () {
+Route::prefix('/auth')->group( function () {
     Route::post('/logout', AuthController::class . '@logout');
 });
 
-Route::prefix('/users')->group(function () {
+Route::prefix('/users')->group( function () {
     Route::get('/list', UserController::class . '@list');
 });

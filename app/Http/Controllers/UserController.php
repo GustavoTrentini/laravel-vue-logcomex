@@ -12,7 +12,7 @@ class UserController extends Controller
     public function list()
     {
         return response()->json((new DefaultResponse(
-            false,
+            true,
             'Usuários cadastrados no sistema',
             $this->userService->list()->toArray()
         ))->toArray());

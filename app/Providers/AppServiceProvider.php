@@ -15,8 +15,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        $this->app->bind(IAuthService::class, AuthService::class);
-        $this->app->bind(IUserService::class, UserService::class);
+        $this->app->scoped(IAuthService::class, AuthService::class);
+        $this->app->scoped(IUserService::class, UserService::class);
     }
 
     /**
